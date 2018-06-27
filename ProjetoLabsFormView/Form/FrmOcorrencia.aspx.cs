@@ -6,11 +6,16 @@ public partial class Form_FrmOcorrencia : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+           GridView1.Visible = false;
         using (DataClassesDataContext banco = new DataClassesDataContext())
         {
             if (!IsPostBack)
             {
                 pegarLaboratorios();
+            }
+            if (Sessao.TipoUsuarioL == 1)
+            {
+                GridView1.Visible = true;
             }
             GridView1.PageSize = 3;
         }
