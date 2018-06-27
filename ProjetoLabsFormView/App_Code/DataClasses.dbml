@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LabsControl1" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-VCBA8CS\ANDRESQL;Initial Catalog=LabsControl1;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="LabsControl1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Status_Agendamento" Member="Status_Agendamentos">
+    <Type Name="Status_Agendamento">
+      <Column Name="id_Status_Agendamento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NomeStatus" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Association Name="Status_Agendamento_tb_Agendamento" Member="tb_Agendamentos" ThisKey="id_Status_Agendamento" OtherKey="id_Status_Agendamento" Type="tb_Agendamento" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_Agendamento" Member="tb_Agendamentos">
+    <Type Name="tb_Agendamento">
+      <Column Name="id_agendamento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dt_agendamento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="id_usuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_laboratorio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_Status_Agendamento" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_Disciplina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_Horario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Status_Agendamento_tb_Agendamento" Member="Status_Agendamento" ThisKey="id_Status_Agendamento" OtherKey="id_Status_Agendamento" Type="Status_Agendamento" IsForeignKey="true" />
+      <Association Name="tb_Disciplina_tb_Agendamento" Member="tb_Disciplina" ThisKey="id_Disciplina" OtherKey="id_Disciplina" Type="tb_Disciplina" IsForeignKey="true" />
+      <Association Name="tb_Horario_tb_Agendamento" Member="tb_Horario" ThisKey="id_Horario" OtherKey="id_Horario" Type="tb_Horario" IsForeignKey="true" />
+      <Association Name="tb_Laboratorio_tb_Agendamento" Member="tb_Laboratorio" ThisKey="id_laboratorio" OtherKey="id_Laboratorio" Type="tb_Laboratorio" IsForeignKey="true" />
+      <Association Name="tb_Usuario_tb_Agendamento" Member="tb_Usuario" ThisKey="id_usuario" OtherKey="id_Usuario" Type="tb_Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_Computador" Member="tb_Computadors">
+    <Type Name="tb_Computador">
+      <Column Name="id_Computador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_Laboratorio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nm_Computador" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="st_Computador" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="mRam_Computador" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="plMae_Computador" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="processador_Computador" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="tb_Computador_tb_ComputadorSoftware" Member="tb_ComputadorSoftwares" ThisKey="id_Computador" OtherKey="id_Computador" Type="tb_ComputadorSoftware" />
+      <Association Name="tb_Laboratorio_tb_Computador" Member="tb_Laboratorio" ThisKey="id_Laboratorio" OtherKey="id_Laboratorio" Type="tb_Laboratorio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_Disciplina" Member="tb_Disciplinas">
+    <Type Name="tb_Disciplina">
+      <Column Name="id_Disciplina" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ds_descricao" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="tb_Disciplina_tb_Agendamento" Member="tb_Agendamentos" ThisKey="id_Disciplina" OtherKey="id_Disciplina" Type="tb_Agendamento" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_ComputadorSoftware" Member="tb_ComputadorSoftwares">
+    <Type Name="tb_ComputadorSoftware">
+      <Column Name="id_Software" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_Computador" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tb_Computador_tb_ComputadorSoftware" Member="tb_Computador" ThisKey="id_Computador" OtherKey="id_Computador" Type="tb_Computador" IsForeignKey="true" />
+      <Association Name="tb_Software_tb_ComputadorSoftware" Member="tb_Software" ThisKey="id_Software" OtherKey="id_Software" Type="tb_Software" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_Horario" Member="tb_Horarios">
+    <Type Name="tb_Horario">
+      <Column Name="id_Horario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="hr_HorarioInicial" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="hr_HorarioFinal" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Association Name="tb_Horario_tb_Agendamento" Member="tb_Agendamentos" ThisKey="id_Horario" OtherKey="id_Horario" Type="tb_Agendamento" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_Laboratorio" Member="tb_Laboratorios">
+    <Type Name="tb_Laboratorio">
+      <Column Name="id_Laboratorio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="lb_Numero" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="lb_Capacidade" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="lb_Arcondicionado" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="lb_Projeto" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Association Name="tb_Laboratorio_tb_Agendamento" Member="tb_Agendamentos" ThisKey="id_Laboratorio" OtherKey="id_laboratorio" Type="tb_Agendamento" />
+      <Association Name="tb_Laboratorio_tb_Computador" Member="tb_Computadors" ThisKey="id_Laboratorio" OtherKey="id_Laboratorio" Type="tb_Computador" />
+      <Association Name="tb_Laboratorio_tb_Ocorrencia" Member="tb_Ocorrencias" ThisKey="id_Laboratorio" OtherKey="id_Laboratorio" Type="tb_Ocorrencia" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_Ocorrencia" Member="tb_Ocorrencias">
+    <Type Name="tb_Ocorrencia">
+      <Column Name="id_Ocorrencia" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_Laboratorio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="oc_descricao" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Association Name="tb_Laboratorio_tb_Ocorrencia" Member="tb_Laboratorio" ThisKey="id_Laboratorio" OtherKey="id_Laboratorio" Type="tb_Laboratorio" IsForeignKey="true" />
+      <Association Name="tb_Usuario_tb_Ocorrencia" Member="tb_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="tb_Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_Software" Member="tb_Softwares">
+    <Type Name="tb_Software">
+      <Column Name="id_Software" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sf_nome" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="sf_interface" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="sf_descricao" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="sf_versao" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="tb_Software_tb_ComputadorSoftware" Member="tb_ComputadorSoftwares" ThisKey="id_Software" OtherKey="id_Software" Type="tb_ComputadorSoftware" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_TipoUsuario" Member="tb_TipoUsuarios">
+    <Type Name="tb_TipoUsuario">
+      <Column Name="id_TipoUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tu_descricao" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="tb_TipoUsuario_tb_Usuario" Member="tb_Usuarios" ThisKey="id_TipoUsuario" OtherKey="id_TipoUsuario" Type="tb_Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_Usuario" Member="tb_Usuarios">
+    <Type Name="tb_Usuario">
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="u_login" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="u_senha" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="u_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="id_TipoUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="u_alterarSenha" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="tb_Usuario_tb_Agendamento" Member="tb_Agendamentos" ThisKey="id_Usuario" OtherKey="id_usuario" Type="tb_Agendamento" />
+      <Association Name="tb_Usuario_tb_Ocorrencia" Member="tb_Ocorrencias" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="tb_Ocorrencia" />
+      <Association Name="tb_TipoUsuario_tb_Usuario" Member="tb_TipoUsuario" ThisKey="id_TipoUsuario" OtherKey="id_TipoUsuario" Type="tb_TipoUsuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

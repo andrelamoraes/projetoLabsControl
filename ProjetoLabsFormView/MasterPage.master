@@ -1,0 +1,118 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head runat="server">
+    <title>Projeto Labs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="cabecalho" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<style>
+    a#header_frmLab:before {
+        color: #FFF;
+    }
+
+    #app-footer {
+        background-color: #17a2b8 !important;
+        clear: both;
+        position: absolute;
+        height: 83px;
+        width: 100%;
+        font-weight: bolder;
+        bottom: auto;
+        color: #FFF;
+    }
+
+    a.copyright h5 {
+        padding: 17px;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        font-family: "Lato", sans-serif;
+        color: rgb(255, 255, 255) !important;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .navbar-nav a:hover {
+        border: 1px solid #1bbad3;
+    }
+</style>
+<body>
+    <asp:ContentPlaceHolder ID="header" runat="server">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+            <a class="navbar-brand">
+                <h1>
+                    <img src="../Image/icon_portal.png" width="100" />
+                </h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <% if (getPerfil() == 1)
+                        { %>
+                    <a class="nav-item nav-link" href="Form/FrmLaboratorio.aspx" id="frmLab" runat="server"><i class="icon ion-md-flask"></i>Laboratorios</a>
+                    <a class="nav-item nav-link" href="Form/FrmUsuario.aspx" id="frmUsuario" runat="server"><i class="icon ion-md-person"></i>Usuarios</a>
+                    <a class="nav-item nav-link" href="Form/FrmOcorrencia.aspx" id="frmOcorrencia" runat="server"><i class="icon ion-md-clipboard"></i>Ocorrências</a>
+                    <a class="nav-item nav-link" href="Form/FrmSoftware.aspx" id="frmSoftware" runat="server"><i class="icon ion-md-browsers"></i>Softwares</a>
+                    <a class="nav-item nav-link" href="Form/FrmComputador.aspx" id="frmComputador" runat="server"><i class="icon ion-md-laptop"></i>Computadores</a>
+                    <% }; %>
+                    <% if (getPerfil() == 1 || getPerfil() == 2)
+                        { %><a class="nav-item nav-link" href="Form/FrmAgendamentos.aspx" id="frmAgendamento" runat="server"><i class="icon ion-md-calendar"></i> Agendamentos</a>
+                    <a class="nav-item nav-link" data-toggle="modal" data-target="#exampleModal" id="A1" runat="server"><i class="icon ion-md-exit"></i>Sair</a><% }; %>
+                </div>
+            </div>
+        </nav>
+    </asp:ContentPlaceHolder>
+
+    <form id="form1" runat="server">
+        <asp:ContentPlaceHolder ID="content" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Você tem certeza que deseja sair?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Realizando o logoff você estará permitindo ao sistema esquecer as suas credenciais. Você deseja mesmo sair?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                    <a href="FrmLogoff.aspx" class="button btn-danger">Desejo sair!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER-->
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+        <footer id="app-footer">
+            <div class="container">
+                <a class="copyright">
+                    <h5>Copyright ® 2018 by GrupoTrembatec - All rights reserved.</h5>
+                </a>
+            </div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </asp:ContentPlaceHolder>
+</body>
+</html>

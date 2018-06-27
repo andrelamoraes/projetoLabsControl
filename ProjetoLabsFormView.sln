@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ProjetoLabsFormView", "ProjetoLabsFormView\", "{71DA7739-C2D9-4ED6-BE6A-5CB89DDD91D8}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_61819"
+		Debug.AspNetCompiler.PhysicalPath = "ProjetoLabsFormView\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61819\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_61819"
+		Release.AspNetCompiler.PhysicalPath = "ProjetoLabsFormView\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61819\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "61819"
+		SlnRelativePath = "ProjetoLabsFormView\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Deploy|Any CPU = Deploy|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71DA7739-C2D9-4ED6-BE6A-5CB89DDD91D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71DA7739-C2D9-4ED6-BE6A-5CB89DDD91D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71DA7739-C2D9-4ED6-BE6A-5CB89DDD91D8}.Deploy|Any CPU.ActiveCfg = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8AAB020-6E70-44BD-B6A0-A781EBEA5786}
+	EndGlobalSection
+EndGlobal
