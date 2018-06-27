@@ -65,13 +65,13 @@
                         { %>
                     <a class="nav-item nav-link" href="Form/FrmLaboratorio.aspx" id="frmLab" runat="server"><i class="icon ion-md-flask"></i>Laboratorios</a>
                     <a class="nav-item nav-link" href="Form/FrmUsuario.aspx" id="frmUsuario" runat="server"><i class="icon ion-md-person"></i>Usuarios</a>
-                    <a class="nav-item nav-link" href="Form/FrmOcorrencia.aspx" id="frmOcorrencia" runat="server"><i class="icon ion-md-clipboard"></i>Ocorrências</a>
                     <a class="nav-item nav-link" href="Form/FrmSoftware.aspx" id="frmSoftware" runat="server"><i class="icon ion-md-browsers"></i>Softwares</a>
                     <a class="nav-item nav-link" href="Form/FrmComputador.aspx" id="frmComputador" runat="server"><i class="icon ion-md-laptop"></i>Computadores</a>
                     <% }; %>
                     <% if (getPerfil() == 1 || getPerfil() == 2)
                         { %><a class="nav-item nav-link" href="Form/FrmAgendamentos.aspx" id="frmAgendamento" runat="server"><i class="icon ion-md-calendar"></i> Agendamentos</a>
-                    <a class="nav-item nav-link" data-toggle="modal" data-target="#exampleModal" id="A1" runat="server"><i class="icon ion-md-exit"></i>Sair</a><% }; %>
+                        <a class="nav-item nav-link" href="Form/FrmOcorrencia.aspx" id="frmOcorrencia" runat="server"><i class="icon ion-md-clipboard"></i>Ocorrências</a>
+                        <a class="nav-item nav-link" data-toggle="modal" data-target="#exampleModal" id="A1" runat="server"><i class="icon ion-md-exit"></i>Sair</a><% }; %>
                 </div>
             </div>
         </nav>
